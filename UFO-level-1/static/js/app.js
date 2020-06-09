@@ -17,23 +17,26 @@ var tbody = d3.select("tbody");
 button.on("click", runEnter);
 form.on("submit",runEnter);
 
+
+
 function runEnter(){
 
-    // Prevent the page from refreshing
+  
+    // Prevent the page from refreshings
   d3.event.preventDefault();
 
     var filterdate = d3.select("#datetime");
     var filterdatevalue =filterdate.property("value");
-    console.log("value is ",filterdatevalue);
 
+  
     var filteredtableData = tableData.filter(ufo => ufo.datetime === filterdatevalue);
 
     console.log(filteredtableData);
 
-   
+    tbody.html("");
 
-    // Adding the table data
-    tableData.forEach(function(uforeport)
+    // Adding the filtered result to the table data 
+    filteredtableData.forEach(function(uforeport)
     {
     console.log(uforeport);
     var myrow = tbody.append('tr');
